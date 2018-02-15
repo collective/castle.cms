@@ -52,7 +52,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="CastleCMS"
+      title="Castle CMS"
       directory="profiles/default"
       description="Installs the castle.cms package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
