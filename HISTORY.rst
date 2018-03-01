@@ -4,6 +4,8 @@ Changelog
 
 unreleased
 ------------------
+- added both relative and exact dates to page content history
+  [robzonenet]
 
 - tweak tour text
   [tkimnguyen]
