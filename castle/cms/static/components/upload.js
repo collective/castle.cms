@@ -207,18 +207,22 @@ define([
         ];
       }
       var label = 'Finished uploading ';
-      if(this.state.duplicate){
+        if(this.state.duplicate){
         label = D.span({}, [
           D.b({}, 'Duplicate detected'),
           D.span({}, ': Using file already uploaded: ')
         ]);
       }
+      var notify = null
+        if(this.getType() === 'video')
+        notify = D.b({}, 'Please wait for the video to be converted');
+
       return D.div({className: 'finished-container'}, [
         D.p({}, [
           label,
           D.a({href: this.state.base_url + '/view', target: '_blank'}, this.state.title),
           '. '
-        ].concat(stateAction)),
+        ].concat(stateAction)), notify
       ]);
     },
 
