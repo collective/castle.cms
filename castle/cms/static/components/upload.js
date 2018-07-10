@@ -215,7 +215,7 @@ define([
       }
       var notify = null
         if(this.getType() === 'video')
-        notify = D.b({}, 'Please wait for the video to be converted');
+        notify = D.b({}, 'Please wait for video to be converted');
 
       return D.div({className: 'finished-container'}, [
         D.p({}, [
