@@ -3,7 +3,6 @@ from castle.cms.lockout import LockoutManager
 from plone import api
 from Products.CMFPlone.controlpanel.browser import usergroups_usersoverview
 from zExceptions import Forbidden
-from plone import api
 
 import time
 
@@ -26,8 +25,6 @@ class UsersOverviewControlPanel(usergroups_usersoverview.UsersOverviewControlPan
             self.send_pwreset()
         elif action == 'resetattempts':
             self.clear_login_attempts()
-        elif action == 'togglewhitelist':
-            self.toggle_whitelist()
 
     def disable_user(self):
         # disabling user is just unassigning all roles...
@@ -58,23 +55,6 @@ class UsersOverviewControlPanel(usergroups_usersoverview.UsersOverviewControlPan
         lockout.clear()
         lockout = LockoutManager(self.context, user.getUserName())
         lockout.clear()
-
-    def toggle_whitelist(self):
-        userid = self.request.form.get('userid')
-        user = api.user.get(userid)
-        whitelist = api.portal.get_registry_record(
-            'plone.pwexpiry_whitelisted_users'
-        )
-        if not whitelist:
-            whitelist = []
-        if whitelist and user.getId() in whitelist:
-            whitelist.remove(user.getId())
-        else:
-            whitelist.append(user.getId().decode('utf-8'))
-        api.portal.set_registry_record(
-            'plone.pwexpiry_whitelisted_users',
-            whitelist
-        )
 
     def delete_user(self):
         """
@@ -108,7 +88,16 @@ class UsersOverviewControlPanel(usergroups_usersoverview.UsersOverviewControlPan
         if mdtool is not None:
             mdtool.deleteMemberData(userid)
 
+    def initialize_memberdata(self):
+        portal_memberdata = api.portal.get_tool("portal_memberdata")
+        if not portal_memberdata.hasProperty("reset_password_required"):
+            portal_memberdata.manage_addProperty(
+                id="reset_password_required", value=False, type="boolean")
+            portal_memberdata.manage_addProperty(
+                id="reset_password_time", value=time.time(), type="float")
+
     def set_password(self):
+        self.initialize_memberdata()
         userid = self.request.form.get('userid')
         pw = self.request.form.get('password')
 

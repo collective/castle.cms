@@ -2,14 +2,8 @@
 Changelog
 =========
 
-2.1 (unreleased)
-----------------
-
-- Add password expiration option with whitelist
-  [CorySanin]
-
-- Fixed a bug with the tab order on the login screen
-  [CorySanin]
+2.0.46 (unreleased)
+-------------------
 
 - The button for creating a custom content type now defaults to cloning an existing one
   [CorySanin]
