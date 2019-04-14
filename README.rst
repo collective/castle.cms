@@ -1,25 +1,11 @@
-.. image:: https://www.wildcardcorp.com/logo.png
-    :height: 50
-    :width: 382
-    :alt: Original work by wildcardcorp.com
-    :scale: 50 %
+=====================
+Welcome to CastleCMS!
+=====================
 
-
-For access to Castle Cloud (our hosted CastleCMS service) or to request customizations or demos, please contact us at https://castlecms.io or https://wildcardcorp.com
-
-info@wildcardcorp.com
-
-+1 (715) 869-3440
-
-=======================================
-Welcome to the main CastleCMS package!
-=======================================
-
+CastleCMS is based on Plone and has some additional features.
 
 Feature List
 ============
-
-In addition to Plone standard features, CastleCMS includes:
 
 - Login/lockout support
 - Content archival to Amazon S3 storage
@@ -129,7 +115,7 @@ Without robot:
 
   ./bin/test -s castle.cms -t \!robot
 
-If you have errors complaining about warning, make sure the version of selenium 
+If you have errors complaining about warning, make sure the version of selenium
 you're using works with the version of Firefox you have installed (see above)
 
 
