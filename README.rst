@@ -2,7 +2,7 @@
 Welcome to CastleCMS!
 =====================
 
-CastleCMS is based on Plone and has some additional features.
+CastleCMS is based on Plone and has many additional features.
 
 Feature List
 ============
